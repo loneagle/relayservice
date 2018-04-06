@@ -1,0 +1,62 @@
+<a href="/adddevice">Add device</a>
+
+<!-- -->
+{{#if devices}}
+  <table border="3" class="text-center">
+    <caption align="center">Existing devices</caption>
+    <tr>
+      <th>Name</th>
+      <th>Place</th>
+      <th>IP</th>
+      <th>Port</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Turn</th>
+      <th>Status</th>
+    </tr>
+    {{#each devices}}
+      <div class="ping">
+        <tr>
+          <td>{{name}}</td>
+          <td>{{place}}</td>
+          <td>{{ip}}</td>
+          <td>{{port}}</td>
+          <td>
+            <form method="post" action="/eddevice"><button name="button" type="submit" value="{{idDevices}}" class="btn btn-default">=</button></form>
+          </td>
+          <td>
+            <form method="post" action="/deldevice"><button type="submit" class="btn btn-default" name="delete" onclick="return confirmDelete()" value="{{idDevices}}"><img src="./images/delete.png" class="buttonimg"></button></form>
+          </td>
+          <td>
+            <form method="post" action="/turnOn"><button name="button" type="submit" value="{{idDevices}}" class="btn btn-default"><img src="./images/turn.png" class="buttonimg"></button></form>
+          </td>
+          {{#if on}}
+            <td><img src="./images/green.png" class="buttonimg"></td>
+          {{/if}}
+          {{#if off}}
+            <td><img src="./images/red.png" class="buttonimg"></td>
+          {{/if}}
+          {{#if no}}
+            <td><img src="./images/gray.png" class="buttonimgfortable"></td>
+          {{/if}}
+        </tr>
+      </div>
+    {{/each}}
+  </table>
+  <script>
+    function confirmDelete() {
+      if (confirm("Do you really want delete this device?")) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
+{{else}}
+  <p></p>
+  <p><b>You dont have any device</b></p>
+{{/if}}
+
+<form method="post" action="/update">
+  <button type="submit" class="btn btn-default">Update</button>
+</form>

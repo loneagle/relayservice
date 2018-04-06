@@ -1,0 +1,39 @@
+<h2 class="page-header" id="error">Register</h2>
+<script src="../jquery/dist/jquery.min.js"></script>
+<form method="post" action="/users/register">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" placeholder="Name" name="name" value="{{name}}" required>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control" placeholder="Email" name="email" value="{{email}}" required>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+  </div>
+  <div class="form-group">
+    <label>Confirm Password</label>
+    <input type="password" class="form-control" placeholder="Password" name="password-check" id="password-check" required>
+  </div>
+  <button type="submit" class="btn btn-default" id="submit">Submit</button>
+
+  <script>
+    let i = 0;
+    jQuery(function() {
+      $("#submit").click(function() {
+        $(".error").hide();
+        var hasError = false;
+        var passwordVal = $("#password").val();
+        var checkVal = $("#password-check").val();
+        if (passwordVal != checkVal) {
+          if (i == 0)
+            $("#error").after('<div class="alert alert-danger">Passwords do not match.</div>');
+          i++;
+          return false;
+        }
+      });
+    });
+  </script>
+</form>
