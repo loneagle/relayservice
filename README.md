@@ -1,21 +1,14 @@
-# Node.js Loginapp
-
-This is a user login and registration app using Node.js, Express, Passport and Mongoose. It is part of the YouTube series [here](https://www.youtube.com/watch?v=Z1ktxiqyiLA)
-
-### Version
-1.1.0
-
-### Usage
-
+# Node.js relayservice
+## Project in dev
+App that remote some relays connected to Internet by ENC28J60 Arduino-based
 
 ### Installation
-
-Loginapp requires [Node.js](https://nodejs.org/) v4+ to run.
+Install latest NodeJS,MySQL 5.7+
 
 ```sh
 $ npm install
 ```
 
 ```sh
-$ npm start
+$ node app.js
 ```
